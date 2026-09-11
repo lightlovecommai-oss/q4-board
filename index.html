@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Q4 進度表｜9–12 月</title>
+<style>
+  :root{
+    --A:#e8734a; --T:#33c495; --P:#4b9bf0; --I:#e6a93a;
+    --act:#C6603A; --bg:#F7F1EC; --ink:#2b2320; --mute:#8a7a70;
+    --line:#e0d2c6; --card:#fffaf6; --sys:#7a5c8f; --bad:#b03a1a; --good:#1f8c68;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"PingFang TC","Noto Sans TC","Heiti TC",-apple-system,sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 28px 80px}
+  h1{font-size:28px;margin:0 0 6px;letter-spacing:.02em}
+  .sub{color:var(--mute);font-size:13.5px;margin:0 0 28px;line-height:1.75}
+
+  .mon{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    margin-bottom:24px;overflow:hidden}
+  .mhd{display:flex;align-items:center;gap:13px;padding:14px 20px;
+    border-bottom:1px solid var(--line)}
+  .mnum{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1;flex:none}
+  .mgoal{font-size:16px;font-weight:700}
+  .mdl{font-size:12px;color:var(--mute);margin-left:auto;text-align:right;
+    line-height:1.4;flex:none}
+  .mbody{padding:4px 20px 18px}
+
+  .row{display:grid;grid-template-columns:24px 1fr 118px 190px;gap:12px;
+    align-items:start;padding:12px 2px;border-top:1px solid #f0e6dc;font-size:13.5px}
+  .row:first-child{border-top:none}
+  .box{width:17px;height:17px;border:2px solid var(--act);border-radius:4px;
+    margin-top:3px;flex:none}
+  .task b{font-weight:700}
+  .task small{display:block;color:var(--mute);font-size:11.5px;margin-top:2px;line-height:1.55}
+  .when{font-weight:700;font-size:13px;color:var(--act);white-space:nowrap}
+  .when small{display:block;color:var(--mute);font-weight:400;font-size:11px;white-space:normal}
+  .done{font-size:12px;color:#5c4c43;line-height:1.6}
+  .done::before{content:"";display:none}
+
+  .red{background:#fdf0e7;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;
+    padding:12px 17px;margin:14px 20px 18px;font-size:13px;line-height:1.75}
+  .red b.t{display:block;color:var(--bad);font-size:13.5px;margin-bottom:3px}
+
+  .fin{background:#2b2320;color:#f7f1ec;border-radius:14px;padding:24px 26px;margin-top:32px}
+  .fin h2{font-size:19px;margin:0 0 4px;color:#fff}
+  .fin .n{color:#d9a88f;font-size:12.5px;margin:0 0 16px}
+  .fin table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .fin td,.fin th{padding:10px 8px;border-top:1px solid #4a3d36;text-align:left;vertical-align:top}
+  .fin th{color:#b9a89d;font-weight:600;font-size:11.5px;letter-spacing:.1em;border-top:none}
+  .fin b{color:#f4c09a}
+
+  .note{font-size:12.5px;color:var(--mute);margin-top:26px;line-height:1.8}
+
+  @media (max-width:760px){
+    .wrap{padding:28px 16px 60px}
+    h1{font-size:22px}
+    .sub{font-size:12.5px;margin-bottom:20px}
+    .mhd{padding:13px 15px;gap:10px}
+    .mnum{font-size:25px}
+    .mgoal{font-size:14.5px;line-height:1.45}
+    .mdl{font-size:11px}
+    .mbody{padding:2px 15px 14px}
+    .red{margin:12px 15px 15px;padding:11px 14px;font-size:12.5px}
+    .fin{padding:20px 17px}
+
+    /* 手機改成堆疊：日期先行、任務、標準各一列 */
+    .row{grid-template-columns:22px 1fr;gap:4px 10px;padding:14px 0}
+    .box{grid-row:1/3}
+    .when{grid-column:2;order:-1;font-size:12.5px;white-space:normal}
+    .when small{display:inline;margin-left:6px}
+    .task{grid-column:2;font-size:14px}
+    .done{grid-column:2;font-size:12px;padding-left:11px;
+      border-left:2px solid #ead9cb;margin-top:5px}
+    .done:empty,.done.dash{display:none}
+    .fin table,.fin tbody,.fin tr,.fin td,.fin th{display:block;width:auto}
+    .fin tr:first-child{display:none}
+    .fin tr{border-top:1px solid #4a3d36;padding:12px 0}
+    .fin td{border:none;padding:1px 0}
+    .fin td:first-child{color:#d9a88f;font-size:11.5px;letter-spacing:.08em}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Q4 進度表｜9–12 月</h1>
+  <p class="sub">
+    每個月一張卡，最下面那條紅線是「這個月唯一不能破的」。<br>
+    有卡住直接回報，不要自己吞。　·　更新日 2026-09-11
+  </p>
+
+  <!-- 9月 -->
+  <div class="mon">
+    <div class="mhd">
+      <div class="mnum" style="color:var(--sys)">9</div>
+      <div class="mgoal">產品可跑、舊學員收回來</div>
+      <div class="mdl">截止 <b>9/30</b></div>
+    </div>
+    <div class="mbody">
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>產品四頁可跑</b>
+          <small>官網／測驗／參觀／會員／進階</small></div>
+        <div class="when">9/26<small>A 班 9/29 要用</small></div>
+        <div class="done">四頁都能<b>收款</b>、能<b>打卡</b>，不是畫面做完就算</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>舊學員報名 10 人</b>
+          <small>邀約＋收單同一通電話，9/15–9/22 逐一打</small></div>
+        <div class="when">9/26<small>報名截止</small></div>
+        <div class="done"><b>押金收齊 10 份</b>才算。不足就當場決定 11 月的門開多大</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>好女人銷講 PPT ①</b>
+          <small>10/13 上場那一份</small></div>
+        <div class="when">9/30</div>
+        <div class="done">講得出來，不是投影片做完</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">天麗・短影音培訓 ①
+          <small>婉芬｜週日 20:00–21:30</small></div>
+        <div class="when">9/27</div>
+        <div class="done dash">—</div>
+      </div>
+    </div>
+    <div class="red">
+      <b class="t">🚫 九月紅線：個人解盤 0 場</b>
+      9–10 月<b>不公開賣會員</b>、解盤一律改<b>團體 30 分</b>、<b>不把個人解盤寫進權益</b>。
+      現在賣出去的每一場，都是 11 月要還的債。
+    </div>
+  </div>
+
+  <!-- 10月 -->
+  <div class="mon">
+    <div class="mhd">
+      <div class="mnum" style="color:var(--A)">10</div>
+      <div class="mgoal">教材定稿、教練出爐</div>
+      <div class="mdl">截止 <b>10/31</b></div>
+    </div>
+    <div class="mbody">
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>一階 L1–L4 內容定稿</b>
+          <small>A 班 9/29–10/22 教完</small></div>
+        <div class="when">10/22</div>
+        <div class="done">內容<b>不再改</b>。視覺＋簡報跟著錄影走，不算在這條</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>解盤員培訓 3 場</b>
+          <small>週六 15:00–17:00｜10/10 是「身分預告」場，B 班開課前兩天</small></div>
+        <div class="when">10/10 · 10/24<br>10/31<small>11/7 留補考</small></div>
+        <div class="done">三場都到的人才算出爐。<b>少一場，11/9 就沒人上路</b></div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>教練解盤後台設計完成</b></div>
+        <div class="when">10/31</div>
+        <div class="done">11/9 解盤員上路當天就要能用</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">好女人演練 ⑤
+          <small>晚 19:00</small></div>
+        <div class="when">10/9</div>
+        <div class="done dash">—</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">好女人銷講 3 場
+          <small>晚 20:00</small></div>
+        <div class="when">10/13 · 10/23<br>10/26</div>
+        <div class="done">PPT ②③ 要在 10/20 前備好</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">Lily 老師銷講
+          <small>PPT 10/22 前備好；骨架沿用好女人那三場</small></div>
+        <div class="when">10/29<small>16:00–18:00</small></div>
+        <div class="done dash">—</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">天麗・短影音 ②③ ＋ 主持人 ①
+          <small>婉芬｜週日 20:00–21:30</small></div>
+        <div class="when">10/4 · 10/11<br>10/25</div>
+        <div class="done">10/18 空一週</div>
+      </div>
+    </div>
+    <div class="red">
+      <b class="t">🚫 十月紅線：解盤員培訓不能少於 3 場</b>
+      這三場是<b>整條供給鏈的瓶頸</b>。11 月的「有人替光頭交付」、12 月的「不介入週」，
+      全部押在這三個週六下午。行程一撞，先砍別的。
+    </div>
+  </div>
+
+  <!-- 11月 -->
+  <div class="mon">
+    <div class="mhd">
+      <div class="mnum" style="color:var(--act)">11</div>
+      <div class="mgoal">一階錄完、第一次有人替光頭交付</div>
+      <div class="mdl">截止 <b>11/29</b></div>
+    </div>
+    <div class="mbody">
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>L1–L4 錄影完成</b>
+          <small>週一・週五早上</small></div>
+        <div class="when">11/29</div>
+        <div class="done">一階<b>內容＋視覺＋簡報全部就緒</b>，可以直接給學員看</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>解盤員實際接案</b>
+          <small>不是受訓完就算，要真的接</small></div>
+        <div class="when">11/9 起</div>
+        <div class="done"><b>每位 4 場以上</b></div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>暖暖包接進課程</b></div>
+        <div class="when">C 班 11/10 起</div>
+        <div class="done">學員在課程裡就碰得到解盤員，不是另外約</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">暖暖包復盤 ①
+          <small>週六 15:00–17:00｜上路兩週後，有真案例才開得起來</small></div>
+        <div class="when">11/21</div>
+        <div class="done dash">—</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">光頭銷講 2 場
+          <small>每月固定兩場，從這個月開始系統化</small></div>
+        <div class="when">11/13 · 11/20</div>
+        <div class="done dash">—</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">分潤制度 ＋ 暖暖包架構</div>
+        <div class="when">11/30</div>
+        <div class="done">12 月助教系統上軌道要用</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">天麗・主持人 ②③
+          <small>婉芬｜週日 20:00–21:30</small></div>
+        <div class="when">11/1 · 11/8</div>
+        <div class="done">11/8 收尾，<b>完全避開錄影三週</b></div>
+      </div>
+    </div>
+    <div class="red">
+      <b class="t">🚫 十一月紅線：光頭親自解盤 每週 2 場以內</b>
+      從「全部自己來」變「抽查」。<b>這條破了，前面兩個月等於白做</b>——
+      培訓了教練卻還是本人上，供給鏈就沒有真的接上。
+    </div>
+  </div>
+
+  <!-- 12月 -->
+  <div class="mon">
+    <div class="mhd">
+      <div class="mnum" style="color:var(--sys)">12</div>
+      <div class="mgoal">二階錄完、乾貨永久外包給錄影帶</div>
+      <div class="mdl">截止 <b>12/31</b></div>
+    </div>
+    <div class="mbody">
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>二階 L5–L8 內容定稿</b>
+          <small>C 班 11/10–12/3 教完＝第二輪</small></div>
+        <div class="when">12/3</div>
+        <div class="done">內容不再改。定稿日就是開錄日</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>L5–L8 錄影完成</b></div>
+        <div class="when">12/31</div>
+        <div class="done"><b>L1–L8 八支全部就緒</b>，一階二階都能純錄播交付</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task"><b>每週一次 1.5 小時演練課</b>
+          <small>乾貨學員自己看錄影，光頭只帶演練</small></div>
+        <div class="when">12/7 起</div>
+        <div class="done">連續跑滿四週沒有退回 4 小時班，才算系統化</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">暖暖包復盤 2 場
+          <small>週六 15:00–17:00</small></div>
+        <div class="when">12/5 · 12/19</div>
+        <div class="done"><b>12/19 由助教主持，光頭不到場</b></div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">銷講 2 場
+          <small>招 2027/1 顧問課新梯</small></div>
+        <div class="when">12/4 · 12/11</div>
+        <div class="done dash">—</div>
+      </div>
+      <div class="row">
+        <div class="box"></div>
+        <div class="task">助教系統接上軌道</div>
+        <div class="when">12/31</div>
+        <div class="done">承 11 月的解盤員，加上分潤制度真的在跑</div>
+      </div>
+    </div>
+    <div class="red">
+      <b class="t">🚫 十二月紅線：12/15–12/21 光頭完全不介入，0 次救火</b>
+      那一週他身上只剩<b>一堂 1.5 小時演練課</b>、自己的 1v1、和本來就在的 BNI。
+      <b>任何一通「老師這個怎麼辦」讓他出手了，就是沒過。</b>
+      所以那一週的問題，請先在團隊內解掉。
+    </div>
+  </div>
+
+  <!-- 終點 -->
+  <div class="fin">
+    <h2>四個數字，只記這四個</h2>
+    <p class="n">其他全部失守都還救得回來，這四個破了就要重來一輪。</p>
+    <table>
+      <tr><th style="width:52px">月</th><th>數字</th><th style="width:290px">破了會怎樣</th></tr>
+      <tr><td><b>9 月</b></td><td><b>舊學員報名 10 人</b>（9/26 押金收齊）</td>
+        <td>池子只有 12–20 人，沒有第二次。11 月沒教練、12 月沒系統</td></tr>
+      <tr><td><b>10 月</b></td><td><b>解盤員培訓 3 場</b>（10/10・10/24・10/31）</td>
+        <td>11/9 沒人上得了路，整條供給鏈斷在這</td></tr>
+      <tr><td><b>11 月</b></td><td><b>光頭親自解盤 每週 2 場以內</b></td>
+        <td>教練練了也沒用，他還是那個瓶頸</td></tr>
+      <tr><td><b>12 月</b></td><td><b>不介入週 0 次救火</b>（12/15–12/21）</td>
+        <td>系統化只是說法，沒有被驗證過</td></tr>
+    </table>
+    <p style="margin:20px 0 0;font-size:14.5px;line-height:1.85">
+      <b>四個連起來讀是同一件事：光頭一步一步，從交付現場退出來。</b><br>
+      <span style="color:#c9b5a8;font-size:13px">
+        終點不是「不教了」，是每週只剩一堂 1.5 小時的演練課——
+        那堂課只有他能上，其餘的錄影帶跟教練都替得了。
+      </span>
+    </p>
+  </div>
+
+  <p class="note">內部進度表，請勿外流。有異動會直接更新這一頁，網址不變。</p>
+
+</div>
+</body>
+</html>
